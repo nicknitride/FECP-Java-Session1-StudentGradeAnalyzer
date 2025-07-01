@@ -45,9 +45,9 @@ public class Main{
             }
             avgNumerator = avgNumerator + studentScore;
             studentLetterGrades.add(studentLetterGrade);
-            System.out.println(studentName+" got grade : "+studentLetterGrade);
+            System.out.println(studentName+" got grade: "+studentLetterGrade);
             if(i==(numStudents-1)){
-                finalAverage = (int)(avgNumerator/(numStudents));
+                finalAverage = (avgNumerator/(numStudents));
             }
         }
 
@@ -71,22 +71,16 @@ public class Main{
 
         System.out.print("\n");
         System.out.println("----- Class Summary -----");
-        System.out.println("Average Score: "+finalAverage);
-        System.out.printf("Grade Counts: A:%d B:%d C:%d D:%d F:%d \n",ATotal, BTotal, CTotal, DTotal, FTotal);
+        System.out.printf("Average Score: %.2f%n",finalAverage);
+        System.out.printf("Grade Counts: A:%d B:%d C:%d D:%d F:%d %n",ATotal, BTotal, CTotal, DTotal, FTotal);
 
         // Build string of top students
-        String topStudentString = "";
+        ArrayList<String> topStudentStringUnjoined = new ArrayList<>();
         for (int i = 0; i <= (matchingIndices.size() - 1); i++) {
             String topStudentName = studentNames.get(matchingIndices.get(i));
             String topStudentScore = studentScores.get(matchingIndices.get(i)).toString();
-            topStudentString = String.format("%s %s (%s)",topStudentString,topStudentName,topStudentScore);
+            topStudentStringUnjoined.add(String.format("%s (%s)",topStudentName,topStudentScore));
         }
-
-        System.out.println("Top Student(s): "+topStudentString);
-        System.out.println("\n\nGrades "+studentLetterGrades.toString());
-        System.out.println(studentNames.toString());
-        System.out.println(studentScores.toString());
-        System.out.printf("Max score :%.2f%n\n",maxScore);
-        System.out.println(matchingIndices.toString());
+        System.out.println("Top Student(s): "+ String.join(" ",topStudentStringUnjoined));
     }
 }
