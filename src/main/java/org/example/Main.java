@@ -13,7 +13,7 @@ public class Main{
         int numStudents = userIn.nextInt();
         userIn.nextLine(); //Note: to consume /n
         int ATotal=0,BTotal=0, CTotal=0, DTotal=0, FTotal=0;
-        double avgCalc;
+        double avgNumerator = 0,finalAverage = 0;
 
         for (int i = 0; i <= (numStudents-1) ; i++) {
             System.out.print("Enter name of student "+(i+1)+": ");
@@ -43,14 +43,17 @@ public class Main{
                 studentLetterGrade = "F";
                 FTotal=FTotal+1;
             }
-
+            avgNumerator = avgNumerator + studentScore;
             studentLetterGrades.add(studentLetterGrade);
             System.out.println(studentName+" got grade "+studentLetterGrade+": ");
+            if(i==(numStudents-1)){
+                finalAverage = (int)(avgNumerator/(numStudents));
+            }
 
         }
         System.out.print("\n");
         System.out.println("----- Class Summary -----");
-        System.out.println("Average Score: ");
+        System.out.println("Average Score: "+finalAverage);
         System.out.println("Grade Counts: ");
         System.out.println("Grades "+studentLetterGrades.toString());
         System.out.println(studentNames.toString());
