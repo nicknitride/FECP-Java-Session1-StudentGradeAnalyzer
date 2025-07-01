@@ -11,7 +11,7 @@ public class Main{
 
         System.out.print("Enter the number of students: ");
         int numStudents = userIn.nextInt();
-        userIn.nextLine(); //consume /n
+        userIn.nextLine(); //Note: to consume /n
         int ATotal=0,BTotal=0, CTotal=0, DTotal=0, FTotal=0;
         double avgCalc;
 
@@ -21,6 +21,7 @@ public class Main{
             studentNames.add(studentName);
             System.out.print("Enter score for "+studentName+": ");
             int studentScore = userIn.nextInt();
+            userIn.nextLine();
             studentScores.add(studentScore);
             String studentLetterGrade="";
             if(studentScore<=100 && studentScore>=90){
@@ -33,7 +34,6 @@ public class Main{
             } else if (studentScore<=79 && studentScore>=70) {
                 studentLetterGrade = "C";
                 CTotal=CTotal+1;
-
             }
             else if (studentScore<=69 && studentScore>=60) {
                 studentLetterGrade = "D";
@@ -43,8 +43,9 @@ public class Main{
                 studentLetterGrade = "F";
                 FTotal=FTotal+1;
             }
+
             studentLetterGrades.add(studentLetterGrade);
-            System.out.print(studentName+" got grade: ");
+            System.out.println(studentName+" got grade "+studentLetterGrade+": ");
 
         }
         System.out.print("\n");
